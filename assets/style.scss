@@ -68,6 +68,7 @@
     font-weight: bold;
     font-size: 35px;
     align-self: center;
+    justify-self: center;
   }
 
   &__delBtn {
@@ -81,4 +82,23 @@
     background-color: transparent;
     font-size: 35px;
   }
+}
+
+.addCouponBtn {
+  width: 80%;
+  height: 80px;
+  font-size: 30px;
+  color: white;
+  background-color: black;
+}
+
+.total-coupon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.total-paragraph {
+  justify-self: center;
+  font-size: 40px;
+  font-weight: bold;
 }
