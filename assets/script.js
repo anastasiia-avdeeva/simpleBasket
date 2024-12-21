@@ -1,9 +1,9 @@
 const totalPar = document.querySelector(".total-paragraph");
 const total = document.getElementById("total-sum");
-let prices = document.querySelectorAll(".item__price");
-let quantities = document.querySelectorAll(
-  ".item__feature:last-child .item__feature-value",
-);
+const items = document.querySelector(".items");
+
+const prices = document.getElementsByClassName("item__price");
+const quantities = document.getElementsByClassName("quantity-val");
 const rubSymbol = "&#8381;";
 
 function calculateTotal() {
@@ -25,3 +25,14 @@ function calculateTotal() {
 }
 
 window.addEventListener("load", calculateTotal);
+
+function deleteItem(event) {
+  const target = event.target;
+  if (target.tagName === "BUTTON") {
+    const itemToDel = target.closest(".item");
+    itemToDel.remove();
+    calculateTotal();
+  }
+}
+
+items.addEventListener("click", deleteItem);
