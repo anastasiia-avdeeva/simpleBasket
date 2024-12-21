@@ -56,7 +56,7 @@
   font-weight: bold;
   font-size: 24px;
 }
-.item__price {
+.item__price-paragraph {
   grid-area: price;
   color: rgb(20, 20, 20);
   font-weight: bold;
@@ -76,21 +76,20 @@
   font-size: 35px;
 }
 
+.total-coupon {
+  display: flex;
+  justify-content: space-between;
+}
+
 .addCouponBtn {
-  width: 80%;
+  width: 40%;
   height: 80px;
   font-size: 30px;
   color: white;
   background-color: black;
 }
 
-.total-coupon {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .total-paragraph {
-  justify-self: center;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
 }
