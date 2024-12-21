@@ -82,11 +82,16 @@
 }
 
 .coupon-btn {
-  width: 40%;
+  width: 30%;
   height: 80px;
   font-size: 30px;
   color: white;
   background-color: black;
+}
+
+.coupon-btn:disabled {
+  color: black;
+  background-color: white;
 }
 
 .total-paragraph {
