@@ -6,6 +6,12 @@ const quantities = document.getElementsByClassName("quantity-val");
 const rubSymbol = "&#8381;";
 const discount = 0.2;
 
+
+window.addEventListener("load", () => {
+  const sum = calculateTotal();
+  pasteTotal(sum);
+});
+
 function calculateTotal() {
   let sum = 0;
 
@@ -21,12 +27,20 @@ function calculateTotal() {
 }
 
 function pasteTotal(sum) {
-  total.innerHTML = sum.toLocaleString("ru-RU") + rubSymbol;
+  // total.innerHTML = sum.toLocaleString("ru-RU") + rubSymbol;
+  let formattedSum = new Intl.NumberFormat('ru-RU', 
+    {  
+        style: 'currency',  
+        currency: 'RUB' 
+    }).format(sum); 
+    total.textContent = formattedSum;
 }
 
-window.addEventListener("load", () => {
-  const sum = calculateTotal();
-  pasteTotal(sum);
+items.addEventListener("click", (e) => {
+  deleteItem(e);
+  const newTotal = calculateTotal();
+  pasteTotal(newTotal);
+  couponBtn.disabled = false;
 });
 
 function deleteItem(event) {
@@ -37,20 +51,15 @@ function deleteItem(event) {
   }
 }
 
-items.addEventListener("click", (e) => {
-  deleteItem(e);
-  const newTotal = calculateTotal();
-  pasteTotal(newTotal);
+couponBtn.addEventListener("click", () => {
+  const newSum = calculateDiscountTotal();
+  pasteTotal(newSum);
+  couponBtn.disabled = true;
 });
 
-function calculateNewTotal() {
+function calculateDiscountTotal() {
   const sum = calculateTotal();
   const newSum = sum * (1 - discount);
   return newSum;
 }
 
-couponBtn.addEventListener("click", () => {
-  const newSum = calculateNewTotal();
-  pasteTotal(newSum);
-  couponBtn.disabled = true;
-});
